@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">WLAN BT Scanner</string>
+    <string name="app_name">WLAN Bluetooth Scanner</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <!--  Fragment WLAN -->
+    <string name="wlan_scan">WLAN scannen</string>
+    
+    <!--  Fragment Bluetooth -->
+    <string name="bluetooth_scan">Bluetooth scannen</string>
+    
+    <!--  Menu -->
+    <string name="menu_wlan">WLAN</string>
+    <string name="menu_bluetooth">Bluetooth</string>
 
 </resources>
