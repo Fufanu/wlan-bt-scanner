@@ -29,6 +29,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 	private Context context;
 	private ListView wlanList;
 	private WifiManager wifi;
+	private WifiReceiver receiver;
 	int size = 0;
 	List<ScanResult> scanResults;
 	
@@ -51,6 +52,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		
 		//wifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 		wifi = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+		receiver = new WifiReceiver();
 		
         if (wifi.isWifiEnabled() == false)
         {
@@ -60,7 +62,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
         //adapter = new ScanResultsAdapter(context, scanResults);
         wlanList.setAdapter(this.adapter);
         
-        context.registerReceiver(new BroadcastReceiver()
+        /*context.registerReceiver(new BroadcastReceiver()
         {
             @Override
             public void onReceive(Context c, Intent intent) 
@@ -70,10 +72,22 @@ public class FragmentWlan extends Fragment implements OnClickListener {
             	adapter.notifyDataSetChanged();
             }
 
-        }, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        }, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));*/
         
 		return view;
 	}
+	/*
+	@Override
+	protected void onResume() {
+		context.registerReceiver(receiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		context.unregisterReceiver(receiver);
+		super.onPause();
+	}*/
 	
 	public void scanNetworks() {
 		boolean scan = wifi.startScan();
@@ -124,7 +138,23 @@ public class FragmentWlan extends Fragment implements OnClickListener {
         }
         catch (Exception e)
         { } 
-		
+	}
+	
+	class WifiReceiver extends BroadcastReceiver {
+
+		public List<ScanResult> getResults() {
+			return scanResults;
+		}
+
+		public WifiManager getManager() {
+			return wifi;
+		}
+
+		@Override
+		public void onReceive(Context c, Intent intent) {
+			scanResults = wifi.getScanResults();
+			adapter.notifyDataSetChanged();
+		}
 	}
 
 }
