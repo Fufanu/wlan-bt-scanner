@@ -60,8 +60,8 @@ public class FragmentWlan extends Fragment implements OnClickListener {
             Toast.makeText(context.getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
             wifi.setWifiEnabled(true);
             wlanList = wlanList==null ? (ListView)view.findViewById(R.id.listView_wlan) : wlanList;
-            wlanList.setAdapter(this.adapter);
             adapter = new ScanResultsAdapter(context, scanResults);
+            wlanList.setAdapter(this.adapter);
         }
         //adapter = new ScanResultsAdapter(context, scanResults);
         
