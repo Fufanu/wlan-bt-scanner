@@ -76,7 +76,8 @@ public class FragmentWlan extends Fragment implements OnClickListener {
             }
 
         }, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));*/
-        
+
+		//wlanList.postInvalidate();
 		return view;
 	}
 	/*
@@ -98,7 +99,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		if(scan) {
 			scanResults = wifi.getScanResults();
 			Toast.makeText(context, getString(R.string.networks_found_msg, scanResults.size()), Toast.LENGTH_LONG).show();
-			//log.d('test', );
+			wlanList.postInvalidate();
 		} else
 			switch(wifi.getWifiState()) {
 			case WifiManager.WIFI_STATE_DISABLING:
