@@ -7,6 +7,19 @@
     
     <!--  Fragment WLAN -->
     <string name="wlan_scan">WLAN scannen</string>
+    <string name="ssid_msg">SSID: %s</string>
+    <string name="bssid_msg">BSSID: %s</string>
+    <string name="capabilities_msg">Capabilities: %s</string>
+    <string name="frecuency_msg">Frecuency: %s MHz</string>
+    <string name="signal_level_msg">Signal Level: %s dBm</string>
+    
+    <string name="wifi_is_not_enabled_msg">WiFi is not enabled</string>
+    <string name="wifi_disabling_msg">WiFi is currently being disabling</string>
+    <string name="wifi_disabled_msg">WiFi is disabled</string>
+    <string name="wifi_enabling_msg">WiFi is currently being enabling</string>
+    <string name="wifi_enabled_msg">WiFi is enabled</string>
+    <string name="wifi_unknown_state_msg">WiFi is in an unknown state</string>
+    <string name="networks_found_msg">%d networks found</string>
     
     <!--  Fragment Bluetooth -->
     <string name="bluetooth_scan">Bluetooth scannen</string>
