@@ -12,7 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class FragmentBluetooth extends Fragment implements OnClickListener {
+public class FragmentChart extends Fragment implements OnClickListener {
+	
+	private NetworkObject network; // Zentraler DatenContainer
+	private Context context;
+	MainActivity activity;
 	
 	private Button buttonScan;
 	private ListView bluetoothList;
@@ -23,7 +27,11 @@ public class FragmentBluetooth extends Fragment implements OnClickListener {
 		
 		super.onCreate(savedInstanceState);
 		
-		View view = inflater.inflate(R.layout.fragment_bluetooth, container, false);
+		context = inflater.getContext();
+		activity = (MainActivity) getActivity();
+		network = activity.network;
+		
+		View view = inflater.inflate(R.layout.fragment_chart, container, false);
 		buttonScan = (Button)view.findViewById(R.id.button_bluetooth_scan);
 		bluetoothList = (ListView)view.findViewById(R.id.listView_bluetooth);
 		buttonScan.setOnClickListener(this);

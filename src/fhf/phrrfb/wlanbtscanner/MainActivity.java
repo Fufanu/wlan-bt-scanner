@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 
 public class MainActivity extends FragmentActivity {
+	
+	NetworkObject network = new NetworkObject();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class MainActivity extends FragmentActivity {
 			if (item.getItemId() == R.id.menu_switchButton_wlan) {
 				newFragment = new FragmentWlan();
 			} else if (item.getItemId() == R.id.menu_switchButton_bluetooth) {
-				newFragment = new FragmentBluetooth();
+				newFragment = new FragmentChart();
 			}
 			else {
 				newFragment = new FragmentWlan();

@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 public class FragmentWlan extends Fragment implements OnClickListener {
 	
+	private NetworkObject network; // Zentraler DatenContainer
+	
 	private Button buttonScan;
 	private Context context;
 	private ListView wlanList;
@@ -45,6 +47,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		
 		context = inflater.getContext();
 		MainActivity activity = (MainActivity) getActivity();
+		network = activity.network;
 		
 		View view = inflater.inflate(R.layout.fragment_wlan, container, false);
 		buttonScan = (Button)view.findViewById(R.id.button_wlan_scan);
