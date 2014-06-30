@@ -44,6 +44,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		
 		context = inflater.getContext();
+		MainActivity activity = (MainActivity) getActivity();
 		
 		View view = inflater.inflate(R.layout.fragment_wlan, container, false);
 		buttonScan = (Button)view.findViewById(R.id.button_wlan_scan);
@@ -58,9 +59,11 @@ public class FragmentWlan extends Fragment implements OnClickListener {
         {
             Toast.makeText(context.getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
             wifi.setWifiEnabled(true);
+            wlanList = wlanList==null ? (ListView)view.findViewById(R.id.listView_wlan) : wlanList;
+            wlanList.setAdapter(this.adapter);
+            adapter = new ScanResultsAdapter(context, scanResults);
         }
         //adapter = new ScanResultsAdapter(context, scanResults);
-        wlanList.setAdapter(this.adapter);
         
         /*context.registerReceiver(new BroadcastReceiver()
         {
@@ -95,6 +98,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		if(scan) {
 			scanResults = wifi.getScanResults();
 			Toast.makeText(context, getString(R.string.networks_found_msg, scanResults.size()), Toast.LENGTH_LONG).show();
+			//log.d('test', );
 		} else
 			switch(wifi.getWifiState()) {
 			case WifiManager.WIFI_STATE_DISABLING:
