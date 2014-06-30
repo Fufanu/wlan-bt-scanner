@@ -59,6 +59,7 @@ public class FragmentWlan extends Fragment implements OnClickListener {
         {
             Toast.makeText(context.getApplicationContext(), "wifi is disabled..making it enabled", Toast.LENGTH_LONG).show();
             wifi.setWifiEnabled(true);
+            scanNetworks();
             wlanList = wlanList==null ? (ListView)view.findViewById(R.id.listView_wlan) : wlanList;
             adapter = new ScanResultsAdapter(context, scanResults);
             wlanList.setAdapter(this.adapter);
@@ -99,7 +100,6 @@ public class FragmentWlan extends Fragment implements OnClickListener {
 		if(scan) {
 			scanResults = wifi.getScanResults();
 			Toast.makeText(context, getString(R.string.networks_found_msg, scanResults.size()), Toast.LENGTH_LONG).show();
-			wlanList.postInvalidate();
 		} else
 			switch(wifi.getWifiState()) {
 			case WifiManager.WIFI_STATE_DISABLING:
