@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.net.wifi.ScanResult;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,9 @@ public class ScanResultsAdapter extends BaseAdapter{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ScanResult result = results.get(position);
-
+		
+		Log.d("SCANRESULT", "FUCK");
+		
 		if(convertView==null) {
 			LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.network_list_row, null);
